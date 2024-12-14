@@ -64,19 +64,32 @@ void slist::print(const char* what) {
 
 void slist::remove(int data) {
     node* c = head;
-    while (c != nullptr) {
-        if (c->data == data) {
-            break;
-        }
-        c = c->link;
+    node* prev;
+    if (c->data == data) {
+        head = c->link;
+        delete c;
     }
-    if (c == nullptr) {
-        cout << "data=" << data << " does not exist\n";
+    else {
+        while (c != nullptr) {
+            if (c->data == data) {
+                break;
+            }
+            prev = c;
+            c = c->link;
+        }
+        if (c == nullptr) {
+            cout << "data=" << data << " does not exist\n";
+        }
+        else {
+            prev->link = c->link;
+            delete c;
+        }
     }
 }
 
 int main() {
     slist l;
+    /*
     l.print("empty list");
     l.clear();
     l.print("Cleared empty list");
@@ -88,4 +101,10 @@ int main() {
     l.print("after append(1,2,42)");
     l.clear();
     l.print("After clear");
+    */
+    l.append(1); l.append(2); l.append(3); l.append(4); l.append(5);
+    l.print("Append: (1, 2, 3, 4, 5) ");
+    l.remove(5);
+    l.print("Removed 5: ");
+    
 }
