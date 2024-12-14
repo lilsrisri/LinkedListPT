@@ -1,8 +1,4 @@
-#include <iostream>
-
-
-using namespace std;
-
+/*
 struct node {
     int data;
     node* link;
@@ -89,7 +85,7 @@ void slist::remove(int data) {
 
 int main() {
     slist l;
-    /*
+   
     l.print("empty list");
     l.clear();
     l.print("Cleared empty list");
@@ -101,10 +97,44 @@ int main() {
     l.print("after append(1,2,42)");
     l.clear();
     l.print("After clear");
-    */
+    
     l.append(1); l.append(2); l.append(3); l.append(4); l.append(5);
     l.print("Append: (1, 2, 3, 4, 5) ");
     l.remove(5);
     l.print("Removed 5: ");
     
+} */
+
+#include <iostream>
+#include "node.h"
+#include "student.h"
+using namespace std;
+
+int main() {
+
+    Student* student1 = new Student("Bob", 123456, 4.0);
+    Student* student2 = new Student("John", 654321, 0.4);
+
+    Node* node1 = new Node(student1);
+    Node* node2 = new Node(student2);
+
+    node1->setNext(node2);
+
+    cout << "Node 1 Student: " << node1->getStudent() << endl;
+    cout << node1->getStudent() << "If this value and the one above are the same, getStudent is working correctly. " << endl;
+    cout << "Node 2 Student: " << node2->getStudent() << endl;
+
+    if (node1->getNext() == node2) {
+        cout << "Node 1 is linked to Node 2 correctly" << endl;
+    } 
+    else {
+        cout << "Node 1 isn't linked to Node 2 correctl" << endl;
+    }
+
+    delete node1;
+    delete node2;
+
+
+    return 0;
+
 }
