@@ -8,6 +8,8 @@ Node::Node(Student* argdata) {
 }
 
 Node::~Node() {
+    delete data;
+    data = nullptr;
 }
 
 Node* Node::getNext() {
@@ -16,6 +18,7 @@ Node* Node::getNext() {
 
 Student* Node::getStudent() {
     return data;
+
 }
 
 void Node::setNext(Node* arglink) {
